@@ -100,7 +100,10 @@ class ProcedureDeclaration<Ts extends TT[]> implements ProgramDef {
 	public body: null | ProcBody<Ts> = null;
 	public readonly symbol: symbol;
 
-	constructor(debugName: null | string, public readonly parameterSig: Ts) {
+	constructor(
+		debugName: null | string,
+		public readonly parameterSig: Ts
+	) {
 		this.symbol = Symbol(debugName || undefined);
 	}
 

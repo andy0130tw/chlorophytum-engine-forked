@@ -23,7 +23,10 @@ export class ProcScopeProxy extends ProgramScopeProxy {
 }
 
 export class FuncScopeProxy<Tr extends TT> extends ProgramScopeProxy {
-	constructor(protected readonly returnType: TT, ps: ProgramScope) {
+	constructor(
+		protected readonly returnType: TT,
+		ps: ProgramScope
+	) {
 		super(ps);
 	}
 	Return(x: CompatibleType<Tr> | Expr<Tr>) {

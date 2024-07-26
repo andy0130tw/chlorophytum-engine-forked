@@ -45,7 +45,10 @@ export class TrIf extends TrStmtBase {
 }
 
 export class TrWhile extends TrStmtBase {
-	constructor(private readonly condition: TrExp, private readonly consequent: TrAlternative) {
+	constructor(
+		private readonly condition: TrExp,
+		private readonly consequent: TrAlternative
+	) {
 		super();
 	}
 	public compile(asm: Assembler, ps: ProgramScope) {
@@ -76,7 +79,10 @@ export class TrWhile extends TrStmtBase {
 }
 
 export class TrDoWhile extends TrStmtBase {
-	constructor(private readonly consequent: TrAlternative, private readonly condition: TrExp) {
+	constructor(
+		private readonly consequent: TrAlternative,
+		private readonly condition: TrExp
+	) {
 		super();
 	}
 	public compile(asm: Assembler, ps: ProgramScope) {

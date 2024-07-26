@@ -36,7 +36,10 @@ export class CHmSelectGlyphsPlugin implements Plugins.IHintingModelPlugin {
 }
 
 export class CHmSelectGlyphs implements IHintingPass {
-	constructor(private readonly subpass: IHintingPass, private readonly selector: GlyphSelector) {
+	constructor(
+		private readonly subpass: IHintingPass,
+		private readonly selector: GlyphSelector
+	) {
 		this.requirePreHintRounds = subpass.requirePreHintRounds;
 		this.factoriesOfUsedHints = subpass.factoriesOfUsedHints;
 	}

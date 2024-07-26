@@ -8,7 +8,10 @@ export function ControlValue<T extends TArith>(type: T, size: number = 1): ExprV
 }
 
 class CvDeclaration<T extends TArith> implements Decl {
-	constructor(public readonly type: T, private readonly size: number) {}
+	constructor(
+		public readonly type: T,
+		private readonly size: number
+	) {}
 	public readonly symbol = Symbol();
 
 	register(gs: GlobalScope) {

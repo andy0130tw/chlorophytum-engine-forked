@@ -35,7 +35,10 @@ class OtdFontFormat implements IFontFormat {
 }
 
 class OtdFontConnection implements IFontConnection {
-	constructor(private readonly path: string, private readonly identifier: string) {}
+	constructor(
+		private readonly path: string,
+		private readonly identifier: string
+	) {}
 
 	public async openFontSource() {
 		const inputStream = fs.createReadStream(this.path);
@@ -55,7 +58,10 @@ class OtdFontConnection implements IFontConnection {
 }
 
 class OtdHlttPreStatAnalyzer implements IFinalHintPreStatAnalyzer {
-	constructor(private readonly path: string, private readonly sink: HlttCollector) {}
+	constructor(
+		private readonly path: string,
+		private readonly sink: HlttCollector
+	) {}
 	public async preStat() {
 		const otd = await StreamJson.parse(fs.createReadStream(this.path));
 		if (!otd.maxp) return;

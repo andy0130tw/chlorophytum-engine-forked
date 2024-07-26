@@ -39,7 +39,10 @@ export class TrCvt implements TrVar {
 }
 
 export class TrOffsetPtr implements TrExp {
-	private constructor(private readonly base: TrExp, private readonly offset: TrExp) {}
+	private constructor(
+		private readonly base: TrExp,
+		private readonly offset: TrExp
+	) {}
 	isConstant() {
 		return undefined;
 	}
@@ -65,7 +68,10 @@ export class TrOffsetPtr implements TrExp {
 }
 
 export class TrLocalPtr implements TrExp {
-	constructor(private readonly symbol: symbol, private readonly offset: number) {}
+	constructor(
+		private readonly symbol: symbol,
+		private readonly offset: number
+	) {}
 	isConstant() {
 		return undefined;
 	}
@@ -87,7 +93,10 @@ export class TrLocalPtr implements TrExp {
 }
 
 export class TrGlobalPtr implements TrExp {
-	constructor(private readonly decl: Decl, private readonly offset: number) {}
+	constructor(
+		private readonly decl: Decl,
+		private readonly offset: number
+	) {}
 	isConstant() {
 		return undefined;
 	}
@@ -103,7 +112,10 @@ export class TrGlobalPtr implements TrExp {
 }
 
 export class TrCvtPtr implements TrExp {
-	constructor(private readonly decl: Decl, private readonly offset: number) {}
+	constructor(
+		private readonly decl: Decl,
+		private readonly offset: number
+	) {}
 	isConstant() {
 		return undefined;
 	}

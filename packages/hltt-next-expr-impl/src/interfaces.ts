@@ -49,10 +49,10 @@ export interface ExprVarCvt<T extends TT> extends ExprBase<T> {
 export type CompatibleType<T> = T extends TArith
 	? number
 	: T extends THandle
-	? number
-	: T extends Bool
-	? boolean
-	: never;
+		? number
+		: T extends Bool
+			? boolean
+			: never;
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 // "All interface" version, used for implementing constructors

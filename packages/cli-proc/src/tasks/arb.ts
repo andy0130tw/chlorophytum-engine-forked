@@ -22,7 +22,10 @@ export interface IScopedTaskResult<R, RepArg, RepResult> {
 }
 
 class TaskState<R> {
-	constructor(private readonly arb: Arbitrator, private task: ITask<R>) {}
+	constructor(
+		private readonly arb: Arbitrator,
+		private task: ITask<R>
+	) {}
 	private error: undefined | Error = undefined;
 	private started = false;
 	private finished = false;

@@ -82,21 +82,19 @@ export class ProgramAssembly {
 	}
 
 	private updateStat(ls: ProgramScope, maxStack: number) {
-		this.stat.maxFunctionDefs = Math.max(
-			this.stat.maxFunctionDefs || 0,
-			this.scope.fpgm.base + this.scope.fpgm.size
-		);
+		this.stat.maxFunctionDefs = Math.max(this.stat.maxFunctionDefs || 0, this.scope.fpgm.size);
 		this.stat.stackHeight = Math.max(
 			this.stat.stackHeight || 0,
 			maxStack * (this.stat.stackHeightMultiplier || 1)
 		);
 		this.stat.maxTwilightPoints = Math.max(
 			this.stat.maxTwilightPoints || 0,
-			this.scope.twilightPoints.base + this.scope.twilightPoints.size
+			this.scope.twilightPoints.size
 		);
 		this.stat.maxStorage = Math.max(
 			this.stat.maxStorage || 0,
-			ls.locals.base + ls.locals.size * (this.stat.maxStorageMultiplier || 1)
+			ls.locals.base +
+				Math.max(0, ls.locals.size - ls.locals.base) * (this.stat.maxStorageMultiplier || 1)
 		);
 	}
 

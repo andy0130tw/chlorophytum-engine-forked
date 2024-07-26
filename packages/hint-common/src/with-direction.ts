@@ -21,7 +21,10 @@ export namespace WithDirection {
 	const TAG = "Chlorophytum::CommonHints::WithDirection";
 
 	export class Hint implements IHint {
-		constructor(private readonly dir: Direction, private readonly inner: IHint) {}
+		constructor(
+			private readonly dir: Direction,
+			private readonly inner: IHint
+		) {}
 		public toJSON() {
 			return { type: TAG, dir: this.dir, inner: this.inner.toJSON() };
 		}

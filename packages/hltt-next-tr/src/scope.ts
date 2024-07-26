@@ -32,7 +32,10 @@ export type ProgramRecord = [ProgramScope, TrStmt];
 export type ProgramDef = Def<ProgramRecord>;
 
 export class GlobalScope {
-	constructor(private readonly options: GsOptions, stats: GsStats) {
+	constructor(
+		private readonly options: GsOptions,
+		stats: GsStats
+	) {
 		if (stats.storageBase <= options.stackPointerStorageID)
 			throw new Error("Unreachable! stoage base <= #HLTT::ABI::SP");
 
@@ -43,7 +46,7 @@ export class GlobalScope {
 					Symbol("HLTT::ABI::SP"),
 					options.stackPointerStorageID,
 					0
-			  )
+				)
 			: options.stackPointerStorageID;
 
 		// GETVARIATION arity
@@ -100,7 +103,10 @@ export class GlobalScope {
 }
 
 export class ProgramScope {
-	constructor(public readonly global: GlobalScope, public readonly isProcedure: boolean) {}
+	constructor(
+		public readonly global: GlobalScope,
+		public readonly isProcedure: boolean
+	) {}
 	public get storageStackFrameSize() {
 		return this.locals.size;
 	}

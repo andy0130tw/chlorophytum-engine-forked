@@ -17,7 +17,10 @@ class Queue {
 }
 
 export class Host implements IWorkerHostMain {
-	constructor(private capacity: number, private readonly options: ProcOptions) {}
+	constructor(
+		private capacity: number,
+		private readonly options: ProcOptions
+	) {}
 
 	private n = 0;
 	public queue: Queue = new Queue();

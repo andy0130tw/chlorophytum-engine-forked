@@ -6,7 +6,10 @@ import { TrExp, TrVar } from "../tr";
 import { TrExprLikeStmtBase } from "./base";
 
 export class TrSetVariable extends TrExprLikeStmtBase {
-	constructor(private variable: TrVar, private value: TrExp) {
+	constructor(
+		private variable: TrVar,
+		private value: TrExp
+	) {
 		super();
 	}
 	protected compileImpl(asm: Assembler, ps: ProgramScope) {

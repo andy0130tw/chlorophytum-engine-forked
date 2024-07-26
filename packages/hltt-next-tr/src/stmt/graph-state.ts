@@ -25,7 +25,10 @@ export class TrIup extends TrExprLikeStmtBase {
 	}
 }
 export class TrGraphState1 extends TrExprLikeStmtBase {
-	constructor(private readonly op: TTI, private readonly e: TrExp) {
+	constructor(
+		private readonly op: TTI,
+		private readonly e: TrExp
+	) {
 		super();
 	}
 	protected compileImpl(asm: Assembler, ps: ProgramScope) {

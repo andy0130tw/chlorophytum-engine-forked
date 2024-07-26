@@ -4,7 +4,10 @@ import * as fs from "fs-extra";
 import { FontIo, Ot } from "ot-builder";
 
 export class TtfPreStatAnalyzer implements IFinalHintPreStatAnalyzer {
-	constructor(private readonly path: string, private readonly sink: HlttCollector) {}
+	constructor(
+		private readonly path: string,
+		private readonly sink: HlttCollector
+	) {}
 	public async preStat() {
 		const sfnt = FontIo.readSfntOtf(await fs.readFile(this.path));
 		const otd = FontIo.readFont(sfnt, Ot.ListGlyphStoreFactory);

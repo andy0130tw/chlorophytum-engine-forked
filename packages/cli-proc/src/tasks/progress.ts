@@ -19,7 +19,10 @@ function formatDuration(ms: number) {
 
 const SMOOTHING = 1 / 32;
 export class Progress {
-	constructor(private prefix: string, private readonly logger: ILogger) {}
+	constructor(
+		private prefix: string,
+		private readonly logger: ILogger
+	) {}
 	private totalTasks = 0;
 	private finishedTasks = 0;
 	private totalDifficulty = 0;

@@ -42,7 +42,10 @@ export class ProgramBoundary implements TtAsmInstr {
 
 export class TtLabelDifference implements IPushValue {
 	public readonly symbol;
-	constructor(public from: TtLabel, public to: TtLabel) {
+	constructor(
+		public from: TtLabel,
+		public to: TtLabel
+	) {
 		this.symbol = Symbol();
 	}
 	get allowByte() {

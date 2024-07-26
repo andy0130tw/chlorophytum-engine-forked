@@ -9,7 +9,10 @@ import { TrLastReturn } from "./exit";
 
 export class TrSeq extends TrStmtBase {
 	private readonly parts: TrStmt[];
-	constructor(private readonly block: boolean, _parts: Iterable<TrStmt>) {
+	constructor(
+		private readonly block: boolean,
+		_parts: Iterable<TrStmt>
+	) {
 		super();
 		this.parts = [..._parts];
 	}

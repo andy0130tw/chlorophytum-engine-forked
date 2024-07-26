@@ -6,7 +6,11 @@ import { TrExp, TrVar } from "../tr";
 import { TrExprLikeStmtBase } from "./base";
 
 export class TrArrayInit extends TrExprLikeStmtBase {
-	constructor(readonly arr: TrVar, private readonly parts: TrExp[], private complex?: boolean) {
+	constructor(
+		readonly arr: TrVar,
+		private readonly parts: TrExp[],
+		private complex?: boolean
+	) {
 		super();
 	}
 	protected compileImpl(asm: Assembler, ps: ProgramScope) {

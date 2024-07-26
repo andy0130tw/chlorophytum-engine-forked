@@ -7,7 +7,10 @@ export type BufferRelocationPlace = {
 };
 
 export class BufferWithRelocations {
-	constructor(public buffer: Buffer, public relocations: BufferRelocationPlace[]) {}
+	constructor(
+		public buffer: Buffer,
+		public relocations: BufferRelocationPlace[]
+	) {}
 	static combine(head: null | undefined | Buffer, segments: BufferWithRelocations[]) {
 		const resultBuffer: Buffer[] = [],
 			resultRelocations: BufferRelocationPlace[] = [];

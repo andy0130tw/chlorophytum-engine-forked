@@ -227,7 +227,10 @@ class MasterCollector {
 }
 
 class GeometryEvaluator {
-	constructor(private readonly parent?: GeometryEvaluator, tfm?: Ot.Glyph.Transform2X3) {
+	constructor(
+		private readonly parent?: GeometryEvaluator,
+		tfm?: Ot.Glyph.Transform2X3
+	) {
 		if (parent) {
 			parent.children.push(this);
 			this.zid = parent.zid;

@@ -26,7 +26,10 @@ class TtfFontFormat implements IFontFormat {
 }
 
 class TtfFontConnection implements IFontConnection {
-	constructor(private readonly path: string, private readonly identifier: string) {}
+	constructor(
+		private readonly path: string,
+		private readonly identifier: string
+	) {}
 
 	public async openFontSource() {
 		return await new TtfFontLoader(this.path, this.identifier).load();

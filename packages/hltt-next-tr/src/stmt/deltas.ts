@@ -7,7 +7,10 @@ import { TrExp } from "../tr";
 import { TrExprLikeStmtBase } from "./base";
 
 export class TrDeltas extends TrExprLikeStmtBase {
-	constructor(readonly op: TTI, private readonly targets: [TrExp, boolean, TrExp][]) {
+	constructor(
+		readonly op: TTI,
+		private readonly targets: [TrExp, boolean, TrExp][]
+	) {
 		super();
 	}
 	protected compileImpl(asm: Assembler, ps: ProgramScope) {

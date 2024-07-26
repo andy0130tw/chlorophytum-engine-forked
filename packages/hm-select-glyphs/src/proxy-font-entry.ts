@@ -17,7 +17,10 @@ export interface GlyphSelector {
 }
 
 export class ProxyFontSource<GID> implements IFontSource<GID> {
-	constructor(private original: IFontSource<GID>, private selector: GlyphSelector) {}
+	constructor(
+		private original: IFontSource<GID>,
+		private selector: GlyphSelector
+	) {}
 	get format() {
 		return this.original.format;
 	}
@@ -65,7 +68,10 @@ class ProxyFontEntry<GID> implements IFontEntry<GID> {
 
 	private collectedGlyphSet: null | Set<GID> = null;
 
-	constructor(private origEntry: IFontEntry<GID>, selector: GlyphSelector) {
+	constructor(
+		private origEntry: IFontEntry<GID>,
+		selector: GlyphSelector
+	) {
 		this.acceptableLookupKinds = new Set(DefaultLookupKinds);
 		this.acceptableScriptTags = new Set(selector.trackScripts);
 		this.acceptableFeatureTags = new Set(selector.trackFeatures);

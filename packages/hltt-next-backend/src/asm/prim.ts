@@ -13,7 +13,10 @@ export class PrimIR implements TtAsmInstr {
 }
 
 export class JumpIR implements TtAsmInstr {
-	constructor(readonly op: TTI, readonly offset: TtLabelDifference) {}
+	constructor(
+		readonly op: TTI,
+		readonly offset: TtLabelDifference
+	) {}
 	codeGen<R>(sink: InstrSink<R>) {
 		if (sink.addJumpOp) {
 			sink.addJumpOp(

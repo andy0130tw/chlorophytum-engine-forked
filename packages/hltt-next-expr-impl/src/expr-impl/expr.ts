@@ -28,7 +28,10 @@ import { Expr, ExprAll, ExprVarAll, ExprVarCvt, ExprVarStore, Stmt } from "../in
 
 // Impl classes
 export class ExprImpl implements ExprAll {
-	protected constructor(public readonly type: TT, public readonly tr: TrExp) {}
+	protected constructor(
+		public readonly type: TT,
+		public readonly tr: TrExp
+	) {}
 	static create<T extends TT>(type: T, ir: TrExp) {
 		return new ExprImpl(type, ir) as unknown as Expr<T>;
 	}
@@ -85,7 +88,10 @@ export class LocalVarExprImpl extends CoercedVarImpl {
 }
 
 export class GlobalVarExprImpl extends CoercedVarImpl {
-	protected constructor(type: TT, public readonly decl: Decl) {
+	protected constructor(
+		type: TT,
+		public readonly decl: Decl
+	) {
 		super(type, Store, TrStorage, new TrGlobalPtr(decl, 0), new TrConst(0));
 	}
 
@@ -95,7 +101,10 @@ export class GlobalVarExprImpl extends CoercedVarImpl {
 }
 
 export class CvtExprImpl<T extends TT> extends CoercedVarImpl {
-	protected constructor(type: T, public readonly decl: Decl) {
+	protected constructor(
+		type: T,
+		public readonly decl: Decl
+	) {
 		super(type, Cvt, TrCvt, new TrCvtPtr(decl, 0), new TrConst(0));
 	}
 	static fromDecl<T extends TT>(ty: T, s: Decl): Expr<T> & ExprVarCvt<T> {

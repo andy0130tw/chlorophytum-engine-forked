@@ -7,7 +7,10 @@ export function GlobalStorage<T extends TT>(type: T, size: number = 1): ExprVarS
 }
 
 class GlobalStorageImpl<T extends TT> implements Decl {
-	constructor(public readonly type: T, private readonly size: number) {}
+	constructor(
+		public readonly type: T,
+		private readonly size: number
+	) {}
 	public readonly symbol = Symbol();
 
 	register(gs: GlobalScope) {
