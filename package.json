@@ -1,4 +1,6 @@
 {
+	"name": "engine",
+	"private": true,
 	"version": "0.50.0",
 	"devDependencies": {
 		"@typescript-eslint/eslint-plugin": "^7.17.0",
