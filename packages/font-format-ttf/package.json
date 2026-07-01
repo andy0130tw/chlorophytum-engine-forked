@@ -1,6 +1,6 @@
 {
-	"name": "@chlorophytum/font-format-ttf",
-	"version": "0.50.0",
+	"name": "@andy0130tw/chlorophytum-font-format-ttf",
+	"version": "0.50.0-fork.0",
 	"description": "",
 	"main": "lib/index.js",
 	"typings": "lib/index.d.ts",

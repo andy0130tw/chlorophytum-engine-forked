@@ -1,15 +1,17 @@
 import { IFinalHintPreStatAnalyzer } from "@chlorophytum/arch";
 import { HlttCollector } from "@chlorophytum/final-hint-format-hltt";
-import * as fs from "fs-extra";
 import { FontIo, Ot } from "ot-builder";
+
+import { IFileSystemProvider } from "..";
 
 export class TtfPreStatAnalyzer implements IFinalHintPreStatAnalyzer {
 	constructor(
 		private readonly path: string,
-		private readonly sink: HlttCollector
+		private readonly sink: HlttCollector,
+		private readonly fs: IFileSystemProvider
 	) {}
 	public async preStat() {
-		const sfnt = FontIo.readSfntOtf(await fs.readFile(this.path));
+		const sfnt = FontIo.readSfntOtf(await this.fs.readFile(this.path));
 		const otd = FontIo.readFont(sfnt, Ot.ListGlyphStoreFactory);
 		if (!Ot.Font.isTtf(otd)) return;
 		this.sink.preStatSink.maxFunctionDefs = Math.max(

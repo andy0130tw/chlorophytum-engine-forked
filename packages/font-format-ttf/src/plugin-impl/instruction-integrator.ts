@@ -4,20 +4,23 @@ import {
 	HlttFinalHintStoreRep,
 	HlttSession
 } from "@chlorophytum/final-hint-format-hltt";
-import * as fs from "fs-extra";
 import { FontIo, Ot, Tag } from "ot-builder";
 
+import { IFileSystemProvider } from "..";
 import { BufferInstr, BufferWithRelocations } from "../support/buffer-instr";
 import { GlyphSetWrapper, VarWrapper } from "../support/otb-support";
 
 export class TtfInstrIntegrator implements IFinalHintIntegrator {
-	constructor(private readonly sFont: string) {}
+	constructor(
+		private readonly sFont: string,
+		private readonly fs: IFileSystemProvider
+	) {}
 
 	private sfntSrc: null | Ot.Sfnt = null;
 	private ttf: null | Ot.Font<Ot.ListGlyphStore> = null;
 	private async ensureFontRead() {
 		if (!this.sfntSrc) {
-			this.sfntSrc = FontIo.readSfntOtf(await fs.readFile(this.sFont));
+			this.sfntSrc = FontIo.readSfntOtf(await this.fs.readFile(this.sFont));
 		}
 		if (!this.ttf) {
 			this.ttf = FontIo.readFont(this.sfntSrc, Ot.ListGlyphStoreFactory);
@@ -38,7 +41,7 @@ export class TtfInstrIntegrator implements IFinalHintIntegrator {
 		this.copyTable(sfntOut, this.sfntSrc, "loca");
 		this.copyTable(sfntOut, this.sfntSrc, "glyf");
 		this.copyTable(sfntOut, this.sfntSrc, "head");
-		await fs.writeFile(output, FontIo.writeSfntOtf(this.sfntSrc));
+		await this.fs.writeFile(output, FontIo.writeSfntOtf(this.sfntSrc));
 	}
 	private copyTable(out: Ot.Sfnt, src: Ot.Sfnt, tag: Tag) {
 		const tbl = out.tables.get(tag);
