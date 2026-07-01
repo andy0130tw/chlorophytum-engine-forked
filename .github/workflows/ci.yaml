@@ -2,9 +2,9 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ 'master' ]
+    branches: [ 'recovery' ]
   pull_request:
-    branches: [ 'master' ]
+    branches: [ 'recovery' ]
 
 jobs:
   ci:
@@ -12,12 +12,12 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [lts/*, latest]
+        node-version: [22.x]
 
     steps:
-    - uses: actions/checkout@v2
+    - uses: actions/checkout@v7
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v6
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm run init --if-present
