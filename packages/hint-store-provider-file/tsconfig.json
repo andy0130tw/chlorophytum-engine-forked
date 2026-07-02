@@ -3,6 +3,8 @@
 	"compilerOptions": {
 		"rootDir": "src",
 		"outDir": "lib",
+		"module": "node16",
+		"moduleResolution": "node16",
 		"tsBuildInfoFile": ".build-cache/src"
 	},
 	"references": [
